@@ -13,4 +13,8 @@ RUN Rscript init.R
 
 COPY . .
 
+# Ensure all necessary R packages are installed
+RUN Rscript -e "install.packages(c('stringi', 'anytime', 'padr', 'plumber', 'forecast'), repos='https://cloud.r-project.org/')"
+
 CMD Rscript server.R
+
